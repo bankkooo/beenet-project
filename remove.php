@@ -66,7 +66,7 @@
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Delete from group name</option>
                             <?php
-                                $conn = mysqli_connect("localhost","root","","testbeenet"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT `groupid`, `name` FROM `group`";
                                 $query = mysqli_query($conn,$sql);

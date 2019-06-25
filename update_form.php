@@ -54,7 +54,7 @@
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Update from group name</option>
                             <?php
-                                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
                                 $query = mysqli_query($conn,$sql);
@@ -70,7 +70,7 @@
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Update to group name</option>
                             <?php
-                                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
                                 $query = mysqli_query($conn,$sql);
