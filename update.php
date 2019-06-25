@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Resume - Start Bootstrap Theme</title>
+  <title>Update Radius User</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,12 +61,13 @@
           <a class="text-success" href="https://www.beenet-engineering.com">Beenet Engineering</a>
         </div>
        
+          
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" required>
-                            <option selected>Update from group name</option>
+                            <option selected>Update from service type</option>
                             <?php
-                                $conn = mysqli_connect("localhost","root","","testbeenet"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","testbeenet"); // Connect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT `groupid`, `name` FROM `group`";
                                 $query = mysqli_query($conn,$sql);
@@ -82,7 +83,7 @@
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Update to group name</option>
                             <?php
-                               $conn = mysqli_connect("localhost","root","","testbeenet"); // Conect to MySQL
+                               $conn = mysqli_connect("localhost","root","","testbeenet"); // Connect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT `groupid`, `name` FROM `group`";
                                 $query = mysqli_query($conn,$sql);
@@ -100,7 +101,7 @@
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </div>
-                
+                              </form>
 
          <!--        <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>      
                 <button type="button" class="btn btn-primary" onclick="window.location.href='upload_form.php'">Upload</button>  -->
