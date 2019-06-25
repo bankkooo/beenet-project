@@ -61,18 +61,18 @@
           <a class="text-success" href="https://www.beenet-engineering.com">Beenet Engineering</a>
         </div>
        
-          
+        <form action="update_process.php" method="post" enctype="multipart/form-data" name="update_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Update from service type</option>
                             <?php
-                                $conn = mysqli_connect("localhost","root","","testbeenet"); // Connect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
-                                $sql = "SELECT `groupid`, `name` FROM `group`";
+                                $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
                                 $query = mysqli_query($conn,$sql);
                                 while($objResult = mysqli_fetch_array($query)){
-                                    echo '<option value="'.$objResult['groupid'].'">'.$objResult['name'].'</option>';
+                                    echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
                                 }
                             ?>
                         </select>
@@ -80,15 +80,15 @@
                 <h1></h1><h1></h1><h1></h1><h1></h1>
 
                 <div class="col">
-                        <select class="custom-select" name="service_id" id="service_id" required>
+                        <select class="custom-select" name="service_id2" id="service_id2" required>
                             <option selected>Update to group name</option>
                             <?php
-                               $conn = mysqli_connect("localhost","root","","testbeenet"); // Connect to MySQL
+                               $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
-                                $sql = "SELECT `groupid`, `name` FROM `group`";
+                                $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
                                 $query = mysqli_query($conn,$sql);
                                 while($objResult = mysqli_fetch_array($query)){
-                                    echo '<option value="'.$objResult['groupid'].'">'.$objResult['name'].'</option>';
+                                    echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
                                 }
                             ?>
                         </select>
