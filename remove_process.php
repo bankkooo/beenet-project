@@ -18,11 +18,11 @@
             $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
             mysqli_set_charset($conn,"utf8"); // MySQL utf-8
 
-                $sql = "SELECT * FROM group"; 
+                $sql = "SELECT * FROM rm_users"; 
                 $query = mysqli_query($conn,$sql);
                 
                     // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                    $sql1 = "DELETE FROM testbeenet.group WHERE groupid = $removeid";
+                    $sql1 = "DELETE FROM rm_users WHERE groupid = $removeid";
 
                     $query = mysqli_query($conn,$sql1);
                 
