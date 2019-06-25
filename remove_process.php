@@ -13,7 +13,8 @@
     </head>
     <body>
         <?php
-
+        
+            $removeid = $_POST['service_id'];
             $conn = mysqli_connect("localhost","root","","testbeenet"); // Conect to MySQL
             mysqli_set_charset($conn,"utf8"); // MySQL utf-8
 
@@ -21,12 +22,25 @@
                 $query = mysqli_query($conn,$sql);
                 
                     // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                    $sql1 = "DELETE FROM testbeenet.group WHERE groupid = 1";
+                    $sql1 = "DELETE FROM testbeenet.group WHERE groupid = $removeid";
 
                     $query = mysqli_query($conn,$sql1);
                 
                
         ?>
+
+        <br>
+        <div class="subheading mb-5 text-center">Remove Group Numba 
+            <?php echo $_POST['service_id']  ?> Completed
+            
+        </div>
+
+        
+        <div class="row">
+                <div class="col text-center">
+                    <a class="btn btn-primary" href="remove.php" role="button">Back</a>
+                </div>
+            </div>
            
         </div>
 
