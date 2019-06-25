@@ -69,10 +69,10 @@
                             <?php
                                 $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
-                                $sql = "SELECT `groupid`, `name` FROM `group`";
+                                $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
                                 $query = mysqli_query($conn,$sql);
                                 while($objResult = mysqli_fetch_array($query)){
-                                    echo '<option value="'.$objResult['groupid'].'">'.$objResult['name'].'</option>';
+                                    echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
                                 }
                             ?>
                         </select>
