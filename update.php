@@ -61,7 +61,7 @@
           <a class="text-success" href="https://www.beenet-engineering.com">Beenet Engineering</a>
         </div>
        
-          
+        <form action="update_process.php" method="post" enctype="multipart/form-data" name="update_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" required>
@@ -80,7 +80,7 @@
                 <h1></h1><h1></h1><h1></h1><h1></h1>
 
                 <div class="col">
-                        <select class="custom-select" name="service_id" id="service_id" required>
+                        <select class="custom-select" name="service_id2" id="service_id2" required>
                             <option selected>Update to group name</option>
                             <?php
                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL

@@ -13,52 +13,24 @@
     </head>
     <body>
         <?php
-            setlocale ( LC_ALL, 'en_US.UTF-8' ); // fgetcsv utf-8
-            
-            move_uploaded_file($_FILES["fileCSV"]["tmp_name"],$_FILES["fileCSV"]["name"]); // Copy/Upload CSV
-
-            $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
-            mysqli_set_charset($conn,"utf8"); // MySQL utf-8
-
-            $objCSV = fopen($_FILES["fileCSV"]["name"], "r");
-            $create_date = date('Y-m-d');
-            $expire_date = date('Y-m-d', strtotime('+2 years'));
-            $count = 0;
-            $dup_count = 0;
-            $dup_arr = array();
-            $flag = true; // skip column header row
-            while(($objArr = fgetcsv($objCSV, 1000, ",")) !== FALSE) {
-                if($flag) { $flag = false; continue; } // skip column header row
-
-                $sql = "SELECT * FROM radcheck WHERE username = '".$objArr[0]."' "; // check duplicate user
+                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                mysqli_set_charset($conn,"utf8"); // MySQL utf-8
+                $oldsrv_id = $_POST['service_id'];
+                $newsrv_id = $_POST['service_id2'];
+                $sql = "UPDATE rm_users SET srvid = $newsrv_id WHERE srvid = $oldsrv_id";
                 $query = mysqli_query($conn,$sql);
-                $obj_result = mysqli_fetch_array($query);
 
-                if($obj_result) {
-                    array_push($dup_arr,$objArr[0]);
-                    $dup_count++;
-                }else{
-                    $sql1 = "INSERT INTO radcheck(id,username,attribute,op,value)
-                            VALUES ('','".$objArr[0]."','Cleartext-Password',':=','".$objArr[1]."') ";
-                    $sql2 = "INSERT INTO radcheck(id,username,attribute,op,value)
-                            VALUES ('','".$objArr[0]."','Simultaneous-Use',':=','".$_POST['simu_use']."') ";
-                    $sql3 = "INSERT INTO rm_users(username,password,groupid,enableuser,firstname,lastname,srvid,expiration,createdon)
-                            VALUES ('".$objArr[0]."','".md5($objArr[1])."','1','1','".$objArr[2]."','".$objArr[3]."','".$_POST['service_id']."','$expire_date','$create_date') ";
-                    $query = mysqli_query($conn,$sql1);
-                    $query = mysqli_query($conn,$sql2);
-                    $query = mysqli_query($conn,$sql3);
-
-                    $count++;
-                }
-            }
-            fclose($obj_csv);
+                /*$sql = "SELECT * FROM group"; 
+                $query = mysqli_query($conn,$sql);
+                            
+                // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
+                $sql1 = "DELETE FROM testbeenet.group WHERE groupid = 1";
             
-            $row = $count + $dup_count;
-            $perc_succ = ($count/$row)*100;
-            $perc_dup = ($dup_count/$row)*100;
+                $query = mysqli_query($conn,$sql1);*/
+
         ?>
 
-        <div class="container border border-light my-md-5 p-4">
+        <!--<div class="container border border-light my-md-5 p-4">
             <div class="row">
                 <div class="col text-center">
                     <span class="text-success"><?php echo "Success import: ".$count." records";?></span>
@@ -84,7 +56,7 @@
             </p>
             <div class="collapse mb-4" id="collapse_dup_users">
                 <div class="card card-body">
-                    <!-- Duplicate users -->
+                     Duplicate users 
                     <?php
                         $chk = true;
                         foreach ($dup_arr as $dup_uname) {
@@ -104,7 +76,7 @@
                     <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
