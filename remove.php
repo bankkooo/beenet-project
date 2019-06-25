@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Resume - Start Bootstrap Theme</title>
+  <title>Remove Radius User</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,6 +61,7 @@
           <a class="text-success" href="https://www.beenet-engineering.com">Beenet Engineering</a>
         </div>
        
+        <form action="remove_process.php" method="post" enctype="multipart/form-data" name="remove_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" required>
@@ -81,11 +82,12 @@
 
                 <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
 
-                 <div class="row">
+                  <div class="row">
                     <div class="col text-center">
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </div>
-                </div>
+                </div> 
+                              </form>
                 
 
          <!--        <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>      
@@ -118,7 +120,7 @@
 
     <hr class="m-0">
 
-       
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

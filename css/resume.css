@@ -89,6 +89,12 @@ p.lead {
   text-transform: uppercase;
 }
 
+.nav-now {
+  font-weight: 800;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+}
+
 #sideNav .navbar-toggler:focus {
   outline-color: #d48a6e;
 }
