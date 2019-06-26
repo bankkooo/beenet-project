@@ -19,64 +19,24 @@
                 $newsrv_id = $_POST['service_id2'];
                 $sql = "UPDATE rm_users SET srvid = $newsrv_id WHERE srvid = $oldsrv_id";
                 $query = mysqli_query($conn,$sql);
-
-                /*$sql = "SELECT * FROM group"; 
+                $sql = "SELECT `srvname` FROM `rm_service` WHERE 'srvid'=  $newsrv_id' LIMIT 1";
                 $query = mysqli_query($conn,$sql);
-                            
-                // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                $sql1 = "DELETE FROM testbeenet.group WHERE groupid = 1";
-            
-                $query = mysqli_query($conn,$sql1);*/
+              
 
         ?>
+        <div class="subheading mb-5 text-center">Update Group Name
+            <?php echo $query ?> <span class="text-success">Completed</span>
+            
+        </div>
 
-        <!--<div class="container border border-light my-md-5 p-4">
-            <div class="row">
+        
+        <div class="row">
                 <div class="col text-center">
-                    <span class="text-success"><?php echo "Success import: ".$count." records";?></span>
-                    <span> | </span>
-                    <span class="text-danger"><?php echo "Duplicate import: ".$dup_count." records";?></span>
+                    <a class="btn btn-primary" href="update.php" role="button">Back</a>
                 </div>
             </div>
-            <div class="progress mb-4" style="height: 20px;">
-                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo number_format((float)$perc_succ, 2, '.', '') . "%"; ?>" 
-                    aria-valuenow="<?php echo number_format((float)$perc_succ, 2, '.', ''); ?>" aria-valuemin="0" aria-valuemax="100">
-                    <?php echo number_format((float)$perc_succ, 2, '.', '') . " %"; ?>
-                </div>
-                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo number_format((float)$perc_dup, 2, '.', '') . "%"; ?>" 
-                    aria-valuenow="<?php echo number_format((float)$perc_dup, 2, '.', ''); ?>" aria-valuemin="0" aria-valuemax="100">
-                    <?php echo number_format((float)$perc_dup, 2, '.', '') . " %"; ?>
-                </div>
-            </div>
-            <?php if($dup_count > 0) {?>
-            <p>
-                <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapse_dup_users" aria-expanded="false" aria-controls="collapse_dup_users">
-                    Show Duplicate Users
-                </button>
-            </p>
-            <div class="collapse mb-4" id="collapse_dup_users">
-                <div class="card card-body">
-                     Duplicate users 
-                    <?php
-                        $chk = true;
-                        foreach ($dup_arr as $dup_uname) {
-                            if($chk){
-                                echo "Already exist user(s): ".$dup_uname;
-                                $chk = false;
-                            }else{
-                                echo ", ".$dup_uname;
-                            }
-                        }
-                    ?>
-                </div>
-            </div>
-            <?php } ?>
-            <div class="row">
-                <div class="col text-center">
-                    <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
-                </div>
-            </div>
-        </div>-->
+           
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
