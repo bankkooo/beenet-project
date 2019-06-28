@@ -30,6 +30,18 @@
 
         ?>
 
+        <div class="subheading mb-5 text-center">Update Group Number
+            <?php echo $_POST['service_id'] ?> to <?php echo $_POST['service_id2'] ?> Completed
+            
+        </div>
+
+        
+        <div class="row">
+                <div class="col text-center">
+                    <a class="btn btn-primary" href="remove.php" role="button">Back</a>
+                </div>
+            </div>
+
         <!--<div class="container border border-light my-md-5 p-4">
             <div class="row">
                 <div class="col text-center">

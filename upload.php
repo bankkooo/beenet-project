@@ -1,3 +1,23 @@
+<?php 
+  session_start(); 
+
+  // if (!isset($_SESSION['username'])) {
+  //   $_SESSION['msg'] = "You must log in first";
+  //   header('location: login.php');
+  // }
+  $username = $_SESSION['managername'];
+
+
+
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: login.php");
+  }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +66,14 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="remove.php">Remove</a>
         </li>
+        <br><br>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" style="color: black;">User: <?php echo $username ?> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="index.php?logout='1'" style="color: red;">Log Out</a>
+        </li>
+
       </ul>
     </div>
   </nav>
@@ -54,6 +82,9 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
+
+
+
         <h1 class="mb-0">Upload
           <span class="text-success">Form</span>
         </h1>
@@ -75,7 +106,9 @@
                             <?php
                                 $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
-                                $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
+                                // $sql = "SELECT `srvid`, `srvname` FROM `rm_services` WHERE rm_allowedmanagers.managername = $username";
+                                // $sql = "SELECT srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE rm_allowedmanagers.managername = admin";
+                                $sql = "SELECT srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
                                 $query = mysqli_query($conn,$sql);
                                 while($objResult = mysqli_fetch_array($query)){
                                     echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';

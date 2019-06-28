@@ -101,7 +101,7 @@
             <?php } ?>
             <div class="row">
                 <div class="col text-center">
-                    <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
+                    <a class="btn btn-primary" href="upload.php" role="button">Back</a>
                 </div>
             </div>
         </div>
