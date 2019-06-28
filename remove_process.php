@@ -22,7 +22,7 @@
                 $query = mysqli_query($conn,$sql);
                 
                     // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                    $sql1 = "DELETE FROM rm_users WHERE groupid = $removeid";
+                    $sql1 = "DELETE FROM rm_users WHERE srvid = $removeid";
 
                     $query = mysqli_query($conn,$sql1);
                 
