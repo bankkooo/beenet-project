@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="theme.css">
 
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/resume.min.css" rel="stylesheet">
+
         <title>Import Radius Users : Remove Process</title>
     </head>
     <body>
@@ -16,13 +24,12 @@
         
             $removeid = $_POST['service_id'];
             $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
-            mysqli_set_charset($conn,"utf8"); // MySQL utf-8
+            mysqli_set_charset($conn,"utf8"); // MySQL utf-8     
 
                 $sql = "SELECT * FROM rm_users"; 
                 $query = mysqli_query($conn,$sql);
                 
-                    // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                    $sql1 = "DELETE FROM rm_users WHERE groupid = $removeid";
+                    $sql1 = "DELETE FROM rm_users WHERE srvid = $removeid";
 
                     $query = mysqli_query($conn,$sql1);
                 
@@ -30,7 +37,7 @@
         ?>
 
         <br>
-        <div class="subheading mb-5 text-center">Remove Group Numba 
+        <div class="subheading mb-5 text-center">Remove Group Number
             <?php echo $_POST['service_id']  ?> Completed
             
         </div>
