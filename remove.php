@@ -1,3 +1,22 @@
+<?php 
+  session_start(); 
+
+   if (isset($_SESSION['managername']) == 0) {
+     $_SESSION['msg'] = "You must log in first";
+     header('location: login.php');
+   }
+ 
+ $username = $_SESSION['managername'];
+
+
+
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: login.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +27,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Remove Radius User</title>
+  <title>Remove Radius Users</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +48,7 @@
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-block d-lg-none">Remove Form</span>
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
+         
       </span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +65,13 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="remove.php">Remove</a>
         </li>
+        <br><br>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" style="color: black;">User: <?php echo $username ?> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="index.php?logout='1'" style="color: red;">Log Out</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -57,24 +83,24 @@
         <h1 class="mb-0">Remove
           <span class="text-success">Form</span>
         </h1>
-        <div class="subheading mb-5">Powered by
-          <a class="text-success" href="https://www.beenet-engineering.com">Beenet Engineering</a>
-        </div>
-       
+        <br><br><br>       
         <form action="remove_process.php" method="post" enctype="multipart/form-data" name="remove_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" required>
-                            <option selected>Delete from group name</option>
+                            <option selected>Delete from service type</option>
                             <?php
-                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
-                                $sql = "SELECT `srvid`, `srvname` FROM `rm_services`";
+                                $sql = "SELECT rm_services.srvid,rm_services.srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
                                 $query = mysqli_query($conn,$sql);
                                 while($objResult = mysqli_fetch_array($query)){
                                     echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
                                 }
                             ?>
+                            
+                          
+
                         </select>
                 </div>
                 <h1></h1><h1></h1><h1></h1><h1></h1>
@@ -109,12 +135,17 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <H5> Contact Us </H5>
+        <br><br><br>
+	<div class="subheading mb-5 text-center">Powered by
+          <a class="text-success text-center" href="https://www.beenet-engineering.com">Beenet Engineering</a>
+        </div>
+
+	<!-- <H5> Contact Us </H5>
         <div class="social-icons">
-          <a href="https://www.facebook.com/BeenetEngineering">
+          <a href="https://www.facebook.com/BeenetEngineering"> 
             <i class="fab fa-facebook-f"></i>
           </a>
-        </div>
+        </div> -->
       </div>
     </section>
 

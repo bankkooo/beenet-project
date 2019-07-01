@@ -9,26 +9,30 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="theme.css">
 
-        <title>Import Radius Users : Upload Process</title>
+        <title>Update Process</title>
     </head>
     <body>
         <?php
-                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
                 mysqli_set_charset($conn,"utf8"); // MySQL utf-8
                 $oldsrv_id = $_POST['service_id'];
                 $newsrv_id = $_POST['service_id2'];
                 $sql = "UPDATE rm_users SET srvid = $newsrv_id WHERE srvid = $oldsrv_id";
                 $query = mysqli_query($conn,$sql);
-
-                /*$sql = "SELECT * FROM group"; 
-                $query = mysqli_query($conn,$sql);
-                            
-                // $sql1 = "DELETE FROM testbeenet.group WHERE groupid = '".$objResult[groupid]."'";
-                $sql1 = "DELETE FROM testbeenet.group WHERE groupid = 1";
-            
-                $query = mysqli_query($conn,$sql1);*/
-
+		$nameservice1 = mysqli_query("SELECT `srvname` FROM `rm_service` WHERE 'srvid'=  $oldsrv_id' LIMIT 1");               
         ?>
+
+        <div class="subheading mb-5 text-center">Update Group Number
+            <?php echo $nameservice1 ?> to <?php echo $_POST['service_id2'] ?> Completed
+            
+        </div>
+
+        
+        <div class="row">
+                <div class="col text-center">
+                    <a class="btn btn-primary" href="update.php" role="button">Back</a>
+                </div>
+            </div>
 
         <!--<div class="container border border-light my-md-5 p-4">
             <div class="row">
@@ -73,7 +77,7 @@
             <?php } ?>
             <div class="row">
                 <div class="col text-center">
-                    <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
+                    <a class="btn btn-primary" href="update.php" role="button">Back</a>
                 </div>
             </div>
         </div>-->

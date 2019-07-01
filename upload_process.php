@@ -17,7 +17,7 @@
             
             move_uploaded_file($_FILES["fileCSV"]["tmp_name"],$_FILES["fileCSV"]["name"]); // Copy/Upload CSV
 
-            $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+            $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
             mysqli_set_charset($conn,"utf8"); // MySQL utf-8
 
             $objCSV = fopen($_FILES["fileCSV"]["name"], "r");
@@ -101,7 +101,7 @@
             <?php } ?>
             <div class="row">
                 <div class="col text-center">
-                    <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
+                    <a class="btn btn-primary" href="upload.php" role="button">Back</a>
                 </div>
             </div>
         </div>
