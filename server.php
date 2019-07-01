@@ -6,7 +6,7 @@ $username = "";
 $email    = "";
 $errors = array(); 
 
-$db = mysqli_connect('localhost', 'importuser', 'secret', 'radius');
+$db = mysqli_connect('localhost', 'root', '', 'radius');
 
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);

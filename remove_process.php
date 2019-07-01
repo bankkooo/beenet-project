@@ -23,7 +23,7 @@
         <?php
         
             $removeid = $_POST['service_id'];
-            $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+            $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
             mysqli_set_charset($conn,"utf8"); // MySQL utf-8     
 
                 $sql = "SELECT * FROM rm_users"; 
