@@ -14,46 +14,74 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="css/resume.min.css" rel="stylesheet">
 
+      
         <title>Remove Process</title>
     </head>
-    <body>
-        <?php
-        
-            $removeid = $_POST['service_id'];
-            $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
-            mysqli_set_charset($conn,"utf8"); // MySQL utf-8     
-
-                $sql = "SELECT * FROM rm_users"; 
-                $query = mysqli_query($conn,$sql);
-                	
-                    $sql1 = "DELETE FROM radcheck WHERE radcheck.username in ( SELECT rm_users.username FROM rm_users WHERE rm_users.srvid = $removeid )";
-
-                    $query = mysqli_query($conn,$sql1);
-
-                    $sql2 = "DELETE FROM rm_users WHERE srvid = $removeid";
-
-                    $query = mysqli_query($conn,$sql2);                
-               
-        ?>
-
+    <body class="profile-page">
         <br>
-        <div class="subheading mb-5 text-center">Remove Group Number
-            <?php echo $_POST['service_id']  ?> Completed
-            
-        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="center">
+                        <h3>REMOVE PROCESS</h3>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                         <?php
+                            $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                            mysqli_set_charset($conn,"utf8"); // MySQL utf-8
+                            if($_POST['service_id'] != "Delete from service type" ) {
+                                $removeid = $_POST['service_id'];
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                                mysqli_set_charset($conn,"utf8"); // MySQL utf-8     
+
+                                    $sql = "SELECT * FROM rm_users"; 
+                                    $query = mysqli_query($conn,$sql);
+                                        
+                                    $sql1 = "DELETE FROM radcheck WHERE radcheck.username in ( SELECT rm_users.username FROM rm_users WHERE rm_users.srvid = $removeid )";
 
 
-        
-        <div class="row">
-                <div class="col text-center">
-                    <a class="btn btn-primary" href="remove.php" role="button">Back</a>
+                                    $query = mysqli_query($conn,$sql1);
+
+                                    $sql2 = "DELETE FROM rm_users WHERE srvid = $removeid";
+
+                                    $query = mysqli_query($conn,$sql2);                
+                                
+                            };
+                            ?>                     
+                   
+               
+                   
+                        <?php   if( $_POST['service_id'] != "Delete from service type" ) { ?>
+                            <div class="alert alert-success alert-dismissible fade show"><strong>Remove !</strong> Group Number  <?php echo $_POST['service_id'] ?> 
+                            
+                        </div>
+                        <?php } else { ?> <div class="alert alert-danger alert-dismissible fade show">
+                            
+                            <strong>Danger!</strong> You chose other but has not typed anything
+                            </div>
+                        <?php } ?>  
+                        <br>
+                    <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3"><a class="btn btn-primary" href="remove.php" role="button">Back</a></div>
+                    
+                    
+                    
+                    
+                    </div>
                 </div>
             </div>
-           
         </div>
+       
+
+     
+     
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

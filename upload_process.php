@@ -51,8 +51,7 @@
                     $count++;
                 }
             }
-            fclose($obj_csv);
-            
+        
             $row = $count + $dup_count;
             $perc_succ = ($count/$row)*100;
             $perc_dup = ($dup_count/$row)*100;
