@@ -83,16 +83,15 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
-        <h1 class="mb-0">Update Share User
+        <h1 class="mb-0">Update Group
           <span class="text-success">Form</span>
         </h1>
-      	<br><br>
-        <div class="container border border-light my-md-5 p-4">    
-        <form action="updateusr_process.php" method="post" enctype="multipart/form-data" name="update_form">
+      	<br><br>       
+        <form action="updategrp_process.php" method="post" enctype="multipart/form-data" name="update_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" onchange="processSelectedFiles(this)" required>
-                            <option selected>Select service type</option>
+                            <option selected>Update from service type</option>
                             <?php
                                 $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
@@ -108,13 +107,23 @@
                 <h1></h1><h1></h1><h1></h1><h1></h1>
 
                 <div class="col">
-                        <input type="text" class="form-control" placeholder="Number of user per account" name="simu_use" id="simu_use" required>
+                        <select class="custom-select" name="service_id2" id="service_id2" required>
+                            <option selected>Update to service type</option>
+                            <?php
+                               $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                                mysqli_set_charset($conn, "utf8");
+                                $sql = "SELECT rm_services.srvid,rm_services.srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
+                                $query = mysqli_query($conn,$sql);
+                                while($objResult = mysqli_fetch_array($query)){
+                                    echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
+                                }
+                            ?>
+                        </select>
                 </div>
-                
 
                 <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
 
-                 <div class="row">
+                <div class="row">
                     <div class="col text-center">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update</button>
                     </div>
@@ -141,8 +150,11 @@
                     </div>
                   </div>
                 </div>
-        </form>
-      
+			
+
+			</div>
+                </div>
+                </form>
 
          <!--        <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>      
                 <button type="button" class="btn btn-primary" onclick="window.location.href='upload_form.php'">Upload</button>  -->

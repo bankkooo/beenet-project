@@ -86,9 +86,8 @@
         <h1 class="mb-0">Update Share User
           <span class="text-success">Form</span>
         </h1>
-      	<br><br>
-        <div class="container border border-light my-md-5 p-4">    
-        <form action="updateusr_process.php" method="post" enctype="multipart/form-data" name="update_form">
+      	<br><br>       
+        <form action="update_process.php" method="post" enctype="multipart/form-data" name="update_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
                         <select class="custom-select" name="service_id" id="service_id" onchange="processSelectedFiles(this)" required>
@@ -107,42 +106,34 @@
                 </div>
                 <h1></h1><h1></h1><h1></h1><h1></h1>
 
+                <!--<div class="col">
+                        <select class="custom-select" name="service_id2" id="service_id2" required>
+                            <option selected>Update to service type</option>
+                            <?php
+                               $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
+                                mysqli_set_charset($conn, "utf8");
+                                $sql = "SELECT rm_services.srvid,rm_services.srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
+                                $query = mysqli_query($conn,$sql);
+                                while($objResult = mysqli_fetch_array($query)){
+                                    echo '<option value="'.$objResult['srvid'].'">'.$objResult['srvname'].'</option>';
+                                }
+                            ?>
+                        </select>
+                </div>
+
+                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>-->
                 <div class="col">
                         <input type="text" class="form-control" placeholder="Number of user per account" name="simu_use" id="simu_use" required>
                 </div>
-                
-
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-
-                 <div class="row">
+                <div class="row">
                     <div class="col text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update</button>
-                    </div>
-                  </div>
-                  <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                    
-                      <!-- Modal content-->
-                      <div class="modal-content">
-                        <div class="modal-header">
-                        
-                          <h4 class="modal-title">Update Process</h4> 
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                        <h4 class="modal-title">detail</h4> 
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">Update</button>
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
+              <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>                 
+		           <button type="submit" class="btn btn-primary">Update</button>
+			
+
+			</div>
                 </div>
-        </form>
-      
+                </form>
 
          <!--        <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>      
                 <button type="button" class="btn btn-primary" onclick="window.location.href='upload_form.php'">Upload</button>  -->

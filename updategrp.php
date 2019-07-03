@@ -86,7 +86,8 @@
         <h1 class="mb-0">Update Group
           <span class="text-success">Form</span>
         </h1>
-      	<br><br>       
+      	<br><br>
+        <div class="container border border-light my-md-5 p-4">    
         <form action="updategrp_process.php" method="post" enctype="multipart/form-data" name="update_form">
             <h1></h1><h1></h1><h1></h1>
                 <div class="col">
@@ -120,10 +121,11 @@
                             ?>
                         </select>
                 </div>
+                
 
                 <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
 
-                <div class="row">
+                 <div class="row">
                     <div class="col text-center">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update</button>
                     </div>
@@ -150,11 +152,8 @@
                     </div>
                   </div>
                 </div>
-			
-
-			</div>
-                </div>
-                </form>
+        </form>
+      
 
          <!--        <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>      
                 <button type="button" class="btn btn-primary" onclick="window.location.href='upload_form.php'">Upload</button>  -->

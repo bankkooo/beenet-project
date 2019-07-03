@@ -38,6 +38,7 @@
                                 $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn,"utf8"); // MySQL utf-8     
 
+                                    $rmsrv_id = $_POST['service_id'];
                                     $sql = "SELECT * FROM rm_users"; 
                                     $query = mysqli_query($conn,$sql);
                                         
@@ -47,7 +48,11 @@
 
                                     $sql2 = "DELETE FROM rm_users WHERE srvid = $removeid";
 
-                                    $query = mysqli_query($conn,$sql2);                
+                                    $query = mysqli_query($conn,$sql2);     
+
+                                    $sql3 = "SELECT * FROM rm_services WHERE srvid = $rmsrv_id LIMIT 1";
+                                    $result = mysqli_query($conn,$sql3);
+                                    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);            
                                 
                             };
                             ?>                     
@@ -55,7 +60,7 @@
                
                    
                         <?php   if( $_POST['service_id'] != "Delete from service type" ) { ?>
-                            <div class="alert alert-success alert-dismissible fade show"><strong>Remove !</strong> Group Number  <?php echo $_POST['service_id'] ?> 
+                            <div class="alert alert-success alert-dismissible fade show"><strong>Remove !</strong> Group  <?php echo $row['srvname'] ?> 
                             
                         </div>
                         <?php } else { ?> <div class="alert alert-danger alert-dismissible fade show">

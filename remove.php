@@ -60,7 +60,10 @@
           <a class="nav-link js-scroll-trigger" href="upload.php">Upload</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="update.php">Update</a>
+          <a class="nav-link js-scroll-trigger" href="updategrp.php">Update Group</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="updateusr.php">Update Share User</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="remove.php">Remove</a>
