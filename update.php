@@ -90,7 +90,7 @@
                         <select class="custom-select" name="service_id" id="service_id" onchange="processSelectedFiles(this)" required>
                             <option selected>Update from service type</option>
                             <?php
-                                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT rm_services.srvid,rm_services.srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
 
@@ -107,7 +107,7 @@
                         <select class="custom-select" name="service_id2" id="service_id2" required>
                             <option selected>Update to service type</option>
                             <?php
-                               $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+                               $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 $sql = "SELECT rm_services.srvid,rm_services.srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE managername = '".$username."'";
                                 $query = mysqli_query($conn,$sql);

@@ -101,7 +101,7 @@
                         <select class="custom-select" name="service_id" id="service_id" required>
                             <option selected>Select service type</option>
                             <?php
-                                $conn = mysqli_connect("localhost","importuser","secret","radius"); // Conect to MySQL
+                                $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                                 mysqli_set_charset($conn, "utf8");
                                 // $sql = "SELECT `srvid`, `srvname` FROM `rm_services` WHERE rm_allowedmanagers.managername = $username";
                                 // $sql = "SELECT srvname FROM rm_services INNER JOIN rm_allowedmanagers ON rm_services.srvid = rm_allowedmanagers.srvid WHERE rm_allowedmanagers.managername = admin";
