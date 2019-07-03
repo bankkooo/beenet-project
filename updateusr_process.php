@@ -38,26 +38,28 @@
                             $conn = mysqli_connect("localhost","root","","radius"); // Conect to MySQL
                             mysqli_set_charset($conn,"utf8"); // MySQL utf-8
                            
-                            if($_POST['service_id'] != "Update from service type" and $_POST['service_id2'] != "Update to service type") {
-                                $oldsrv_id = $_POST['service_id'];
-                                $newsrv_id = $_POST['service_id2'];
-                                $sql = "UPDATE rm_users SET srvid = $newsrv_id WHERE srvid = $oldsrv_id";
+                            if($_POST['service_id'] != "Update from service type" and $_POST['simu_use'] != "") {
+                                $srv_id = $_POST['service_id'];
+                                $newsimu = $_POST['simu_use'];
+                                $sql = "UPDATE radcheck SET value = $newsimu WHERE radcheck.attribute = 'Simultaneous-Use' and radcheck.username in ( SELECT rm_users.username FROM  rm_users WHERE rm_users.srvid = $srv_id )";
                                 $query = mysqli_query($conn,$sql);
-                                $sql = "SELECT * FROM rm_services WHERE srvid = $oldsrv_id LIMIT 1";
+
+
+                                $sql = "SELECT * FROM rm_services WHERE srvid = $srv_id LIMIT 1";
                                 $result = mysqli_query($conn,$sql);
                                 $row1=mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                $sql = "SELECT * FROM rm_services WHERE srvid = $newsrv_id LIMIT 1";
+                                /*$sql = "SELECT * FROM rm_services WHERE srvid = $newsrv_id LIMIT 1";
                                 $result = mysqli_query($conn,$sql);
-                                $row2=mysqli_fetch_array($result,MYSQLI_ASSOC); 
+                                $row2=mysqli_fetch_array($result,MYSQLI_ASSOC); */
                                 
                             };
                             ?>                     
                    
                
                    
-                        <?php   if( $_POST['service_id'] != "Update from service type" and $_POST['service_id2'] != "Update to service type") { ?>
-                            <div class="alert alert-success alert-dismissible fade show"><strong>Success!</strong> Update service  <?php echo $row1['srvname'] ?> 
-                             to <?php echo $row2['srvname'] ?>
+                        <?php   if( $_POST['service_id'] != "Update from service type" and $_POST['simu_use'] != "") { ?>
+                            <div class="alert alert-success alert-dismissible fade show"><strong>Success!</strong> Update service <?php echo $row1['srvname'] ?> 
+                             share <?php echo $newsimu ?> user
                         </div>
                         <?php } else { ?> <div class="alert alert-danger alert-dismissible fade show">
                             

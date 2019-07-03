@@ -43,7 +43,13 @@
                                     $query = mysqli_query($conn,$sql);
                                         
                                     $sql1 = "DELETE FROM radcheck WHERE radcheck.username in ( SELECT rm_users.username FROM rm_users WHERE rm_users.srvid = $removeid )";
+                                    //UPDATE radcheck SET value = 99 WHERE radcheck.attribute = "Simultaneous-Use" and radcheck.username in ( SELECT rm_users.usernameFROM  rm_users WHERE rm_users.srvid =3 )
 
+
+
+
+
+                                    //SELECT * FROM  radcheck ,  rm_users WHERE radcheck.username in ( SELECT rm_users.usernameFROM  rm_users WHERE rm_users.srvid =0 )
                                     $query = mysqli_query($conn,$sql1);
 
                                     $sql2 = "DELETE FROM rm_users WHERE srvid = $removeid";
