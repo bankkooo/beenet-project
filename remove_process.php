@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
+
       
         <title>Remove Process</title>
     </head>
@@ -41,6 +42,7 @@
                                     $query = mysqli_query($conn,$sql);
                                         
                                     $sql1 = "DELETE FROM radcheck WHERE radcheck.username in ( SELECT rm_users.username FROM rm_users WHERE rm_users.srvid = $removeid )";
+
 
                                     $query = mysqli_query($conn,$sql1);
 
