@@ -130,7 +130,7 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                        <h4 class="modal-title">detail</h4> 
+                        <h4 class="modal-title">Confirm?</h4> 
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn btn-primary">Update</button>
