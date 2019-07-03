@@ -51,8 +51,7 @@
                     $count++;
                 }
             }
-            fclose($obj_csv);
-            
+        
             $row = $count + $dup_count;
             $perc_succ = ($count/$row)*100;
             $perc_dup = ($dup_count/$row)*100;
@@ -101,7 +100,7 @@
             <?php } ?>
             <div class="row">
                 <div class="col text-center">
-                    <a class="btn btn-primary" href="upload_form.php" role="button">Back</a>
+                    <a class="btn btn-primary" href="upload.php" role="button">Back</a>
                 </div>
             </div>
         </div>
